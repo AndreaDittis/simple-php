@@ -1,0 +1,35 @@
+{
+    "name": "tigerb/easy-php",
+    "description": "A Faster Lightweight Full-Stack PHP Framework",
+    "version": "0.6.9",
+    "type": "framework, easy-php, php framework",
+    "homepage": "http://php.tiegrb.cn/",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "authors": [{
+        "name": "tigerb",
+        "email": "tigerbcode@gmail.com"
+    }],
+    "require-dev": {
+        "squizlabs/php_codesniffer": "*",
+        "phpunit/phpunit": "^6.0"
+    },
+    "require": {
+        "mongodb/mongodb": "^1.1"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "cp .env.example .env",
+            "chmod -R 777 runtime",
+            "composer dump-autoload --optimize"
+        ],
+        "post-root-project-cmd": [
+            "composer install",
+            "cp ./.git-hooks/* ./git/hooks"
+        ],
+        "pre-status-cmd": [
+            "cp .env.example .env",
+            "rm -rf runtime/*"
+        ]
+    }
+}
